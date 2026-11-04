@@ -1,0 +1,557 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font:
+          14px -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: #fff;
+        color: #000;
+      }
+      img {
+        max-width: 100%;
+      }
+      [hidden]:not([hidden="until-found" i]) {
+        display: none !important;
+      }
+    </style>
+    <link rel="icon" type="image/png" href="source/img/logo-yayasan.png" />
+    `r`n
+  </head>
+  <body>
+    <title>Yayasan Sabuk Belo Nusantara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap"
+    />
+    <style>
+      /* Layout: identity panel on the left (sticky on desktop), stack of official links on the right. One column on phones. */
+      :root {
+        --bg: #fbf8f7;
+        --surface: #ffffff;
+        --ink: #1d1416;
+        --muted: #665a5d;
+        --line: #e7dcda;
+        --red: #b3122a;
+        --btn: #b3122a;
+        --on-btn: #ffffff;
+        --gold: #86600f;
+        --gold-line: #c9a13c;
+        --tile: #f5edeb;
+        --shadow:
+          0 1px 0 rgba(29, 20, 22, 0.04),
+          0 10px 26px -14px rgba(29, 20, 22, 0.22);
+        --font-display:
+          "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+        --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #140e10;
+          --surface: #1e1618;
+          --ink: #f6efec;
+          --muted: #b5a6a9;
+          --line: #352a2d;
+          --red: #f0576c;
+          --btn: #c8223a;
+          --gold: #e3bc5a;
+          --gold-line: #cfa94a;
+          --tile: #2b2023;
+          --shadow:
+            0 1px 0 rgba(0, 0, 0, 0.4), 0 12px 28px -14px rgba(0, 0, 0, 0.75);
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #140e10;
+        --surface: #1e1618;
+        --ink: #f6efec;
+        --muted: #b5a6a9;
+        --line: #352a2d;
+        --red: #f0576c;
+        --btn: #c8223a;
+        --gold: #e3bc5a;
+        --gold-line: #cfa94a;
+        --tile: #2b2023;
+        --shadow:
+          0 1px 0 rgba(0, 0, 0, 0.4), 0 12px 28px -14px rgba(0, 0, 0, 0.75);
+        color-scheme: dark;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-body);
+        font-size: 1rem;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        max-width: 1060px;
+        margin-inline: auto;
+        padding-inline: clamp(16px, 4vw, 40px);
+        padding-block: clamp(24px, 6vh, 72px);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+      }
+
+      /* ---------- Identity ---------- */
+      .identity {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: 18px;
+        row-gap: 16px;
+        align-items: center;
+      }
+      .identity > :not(.seal):not(.headline) {
+        grid-column: 1 / -1;
+      }
+
+      .seal {
+        width: clamp(92px, 26vw, 120px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #ffffff;
+        padding: 4px;
+        box-shadow:
+          0 0 0 1px var(--line),
+          var(--shadow);
+      }
+      .seal img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .eyebrow {
+        margin: 0 0 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      h1 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.5rem, 1rem + 2.4vw, 2.75rem);
+        line-height: 1.06;
+        letter-spacing: -0.012em;
+        text-wrap: balance;
+      }
+      .lead {
+        margin: 0;
+        max-width: 38ch;
+        color: var(--muted);
+        font-size: 1.0625rem;
+      }
+
+      .pillars {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        font-weight: 500;
+        font-size: 0.9375rem;
+      }
+      .pillars li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pillars li::before {
+        content: "";
+        width: 14px;
+        height: 8px;
+        border: 2px solid var(--gold-line);
+        border-radius: 5px;
+        flex: none;
+      }
+
+      /* Rantai emas dari logo, dipakai sekali sebagai pembatas */
+      .chain {
+        height: 12px;
+        width: 100%;
+        max-width: 280px;
+        background: var(--gold-line);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12' viewBox='0 0 14 12'%3E%3Crect x='1' y='1.5' width='18' height='9' rx='4.5' fill='none' stroke='black' stroke-width='1.6'/%3E%3Crect x='-13' y='1.5' width='18' height='9' rx='4.5' fill='none' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E")
+          repeat-x left center / 14px 12px;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12' viewBox='0 0 14 12'%3E%3Crect x='1' y='1.5' width='18' height='9' rx='4.5' fill='none' stroke='black' stroke-width='1.6'/%3E%3Crect x='-13' y='1.5' width='18' height='9' rx='4.5' fill='none' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E")
+          repeat-x left center / 14px 12px;
+      }
+      .place {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+
+      /* ---------- Links ---------- */
+      .links h2 {
+        margin: 0 0 14px;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.8125rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .stack {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface);
+        color: var(--ink);
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        transition:
+          transform 0.18s ease,
+          border-color 0.18s ease;
+      }
+      .row:hover {
+        border-color: var(--red);
+        transform: translateY(-1px);
+      }
+      .row:focus-visible {
+        outline: 3px solid var(--red);
+        outline-offset: 3px;
+      }
+
+      .tile {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: var(--tile);
+        color: var(--red);
+      }
+      .arrow {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .tile i {
+        font-size: 1.375rem;
+        line-height: 1;
+      }
+      .tile .svg-inline--fa {
+        height: 1.375rem;
+        width: auto;
+      }
+      .arrow {
+        width: 20px;
+        height: 20px;
+        color: var(--muted);
+        transition:
+          transform 0.18s ease,
+          color 0.18s ease;
+      }
+      .row:hover .arrow {
+        transform: translate(2px, -2px);
+        color: var(--red);
+      }
+
+      .t {
+        display: block;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.0625rem;
+        line-height: 1.25;
+      }
+      .d {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.35;
+      }
+
+      .row--primary {
+        background: var(--btn);
+        border-color: var(--btn);
+        color: var(--on-btn);
+      }
+      .row--primary:hover {
+        border-color: var(--btn);
+      }
+      .row--primary .tile {
+        background: rgba(255, 255, 255, 0.16);
+        color: #ffffff;
+      }
+      .row--primary .d {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .row--primary .arrow,
+      .row--primary:hover .arrow {
+        color: #ffffff;
+      }
+
+      .foot {
+        margin: 22px 0 0;
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+
+      /* ---------- Desktop ---------- */
+      @media (min-width: 860px) {
+        .page {
+          grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+          gap: clamp(40px, 7vw, 96px);
+          align-items: start;
+        }
+        .identity {
+          position: sticky;
+          top: 48px;
+          grid-template-columns: minmax(0, 1fr);
+          row-gap: 22px;
+        }
+        .identity > :not(.seal):not(.headline) {
+          grid-column: auto;
+        }
+        .seal {
+          width: 176px;
+          padding: 6px;
+        }
+        .links {
+          padding-top: 8px;
+        }
+        .row {
+          padding: 16px 20px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .row,
+        .arrow {
+          transition: none;
+        }
+        .row:hover {
+          transform: none;
+        }
+        .row:hover .arrow {
+          transform: none;
+        }
+      }
+    </style>
+
+    <main class="page">
+      <section class="identity" aria-labelledby="nama">
+        <div class="seal">
+          <img
+            src="source/img/logo-yayasan.png"
+            alt="Logo Yayasan Sabuk Belo Nusantara, Lombok Timur"
+            width="360"
+            height="360"
+          />
+        </div>
+        <div class="headline">
+          <p class="eyebrow">Yayasan &middot; Lombok Timur</p>
+          <h1 id="nama">Yayasan Sabuk Belo Nusantara</h1>
+        </div>
+        <p class="lead">
+          Bergerak di bidang pendidikan, adat dan kebudayaan, serta sosial dan
+          kemanusiaan.
+        </p>
+        <ul class="pillars">
+          <li>Pendidikan</li>
+          <li>Adat &amp; Kebudayaan</li>
+          <li>Sosial &amp; Kemanusiaan</li>
+        </ul>
+        <div class="chain" aria-hidden="true"></div>
+        <p class="place">Lombok Timur, Nusa Tenggara Barat</p>
+      </section>
+
+      <section class="links" aria-labelledby="tautan">
+        <h2 id="tautan">Terhubung dengan kami</h2>
+
+        <!-- GANTI nilai href di bawah dengan alamat resmi yayasan. -->
+        <ul class="stack">
+          <li>
+            <a
+              class="row row--primary"
+              href="https://sabukbelonusantara.id"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="tile" aria-hidden="true"
+                ><i class="fa-solid fa-globe"></i
+              ></span>
+              <span
+                ><span class="t">Website Resmi</span
+                ><span class="d"
+                  >Profil, program, berita, dan agenda yayasan</span
+                ></span
+              >
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 7h10v10" />
+                <path d="M7 17 17 7" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              class="row"
+              href="https://www.instagram.com/sabukbelonusantara/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="tile" aria-hidden="true"
+                ><i class="fa-brands fa-instagram"></i
+              ></span>
+              <span
+                ><span class="t">Instagram</span
+                ><span class="d"
+                  >Dokumentasi kegiatan dan kabar terbaru</span
+                ></span
+              >
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 7h10v10" />
+                <path d="M7 17 17 7" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              class="row"
+              href="https://www.facebook.com/profile.php?id=61595410259238/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="tile" aria-hidden="true"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></span>
+              <span
+                ><span class="t">Facebook</span
+                ><span class="d">Pengumuman dan kabar kegiatan</span></span
+              >
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 7h10v10" />
+                <path d="M7 17 17 7" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              class="row"
+              href="https://www.youtube.com/@SabukBeloNusantara"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="tile" aria-hidden="true"
+                ><i class="fa-brands fa-youtube"></i
+              ></span>
+              <span
+                ><span class="t">YouTube</span
+                ><span class="d">Video kegiatan dan liputan</span></span
+              >
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 7h10v10" />
+                <path d="M7 17 17 7" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              class="row"
+              href="https://www.tiktok.com/@sabukbelonusantara"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="tile" aria-hidden="true"
+                ><i class="fa-brands fa-tiktok"></i
+              ></span>
+              <span
+                ><span class="t">TikTok</span
+                ><span class="d">Cuplikan singkat kegiatan yayasan</span></span
+              >
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 7h10v10" />
+                <path d="M7 17 17 7" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              class="row"
+              href="https://wa.me/6281973377504"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="tile" aria-hidden="true"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></span>
+              <span
+                ><span class="t">WhatsApp</span
+                ><span class="d">Hubungi pengurus secara langsung</span></span
+              >
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 7h10v10" />
+                <path d="M7 17 17 7" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <p class="foot">
+          &copy; <span id="tahun">{{ now()->year }}</span> Yayasan Sabuk Belo
+          Nusantara
+        </p>
+      </section>
+    </main>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      try {
+        document.getElementById("tahun").textContent = new Date().getFullYear();
+      } catch (e) {}
+    </script>
+  </body>
+</html>
